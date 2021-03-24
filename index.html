@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LMC</title>
+        <link rel="icon" href="heart.png" type="image/gif" sizes="16x16"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            /*min-height:100vh;*/
+        }
+        body {
+            background: #000000;
+            font-family: 'Oswald', sans-serif;
+        }
+        .heart{
+            width:100px;
+            display:block;
+            height:100px;
+            background:#ff86a2;
+            position:relative;
+            border-bottom-left-radius:30px;
+            margin:100px 50px 0px 50px;
+            transform:rotate(-45deg);
+            box-shadow:0px 19px 104px 4px #ff0057;
+            z-index:-1;
+            animation:spin 6s linear infinite;
+        }
+        @keyframes spin{
+            0%,100%{top:0px;}
+            50%{top:200px;}
+
+        }
+
+        .second{
+            float:right;
+            top:100px;
+            animation-delay:1s;
+        }
+
+        .heart:before{
+            content:'';
+            position:absolute;
+            width:100px;
+            height:100px;
+            background:#ff86a2;
+            border-radius:50%;
+            top:-50%;
+        }
+        .heart:after{
+            content:'';
+            position:absolute;
+            width:100px;
+            height:100px;
+            background:#ff86a2;
+            border-radius:50%;
+            right:-50%;
+        }
+        .glass {
+            background: #00000000;
+            padding: 50px;
+            z-index: 2;
+            width: 400px;
+            margin: auto;
+            height: 398px;
+            backdrop-filter: blur(7px);
+            text-align: center;
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translate(-50%,50%);
+            border: 2px solid #ffffff26;
+        }
+        
+        input{
+            padding:10px;
+            font-size:16px;
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+            border:none;
+            background:white;
+            display:block;
+            margin:auto;
+            margin-bottom:20px;
+            width:90%;
+            transition:.3s;
+        }
+        input:focus{
+            outline:none;
+            padding:15px;
+            width:100%;
+        }
+        h1 {
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 0px 0px 13px white;
+}
+        h2{color:red;margin-bottom:20px;font-size:50px;}
+        button {
+            border: 1px solid #ffffff;
+            box-shadow: 0px 0px 26px -8px #f50074, 0px 0px 26px -8px #f50074 inset;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            font-family: 'Oswald', sans-serif;
+            background: black;
+            color: #ffffff;
+            cursor: pointer;
+            transition: .3s;
+        }
+        button a{color:white;text-decoration:none;}
+        button:focus{
+            padding:10px 40px;
+            outline:none;
+        }
+        p{color:white;}
+
+        ::-webkit-scrollbar
+        {
+            display:none;
+        }
+        
+        span{color:#9E9E9E;position:absolute;bottom:0px;font-size:8px;}
+        span a{color:#9e9e9e;text-decoration:none;}
+        
+        .caught{
+            display:None;
+            position: absolute;
+            bottom:0px;
+            align-items: center;
+        }
+
+        
+    </style>
+        <div class="hearts"><div class="heart"></div>
+        <div class="heart second"></div></div>
+
+        <div class="glass">
+            <h1>Love Match Calculator👉👈</h1>
+            <input type="text" id="yname" placeholder="Enter Your Name😗" requierd/>
+            <input type="text" id="cname" placeholder="Enter his/her Name😗" requierd/>
+            <button onclick="return calc()" id="btn">Calculate Matching🐸🐸🐸</button>
+            <p></p>
+            <h2></h2>
+            <a href="#"><button>Reset</button></a>
+
+            
+        </div>
+        <span>©-<a href="https://www.linkedin.com/in/md-ashiqur-rahim-prottoy-13315a204">Prottoy</a></span>
+        
+        <div class="caught">
+            <h1>You Wrote My name❗</h1>
+            <img src="emoji.png"/>
+        </div>
+        <script>
+        var f=document.querySelector(".caught");
+        function calc(){
+            var btn=document.querySelector(".glass h2");
+        var pera=document.querySelector(".glass p");
+        var randomNumber=Math.random()*100;
+        var percentage=(randomNumber.toFixed(1))+1;
+
+            var txt1=document.getElementById("yname").value;
+            var txt1=txt1.toUpperCase();
+            var txt2=document.getElementById("cname").value;
+            var txt2=txt2.toUpperCase()
+            
+            
+            if(txt1=="" || txt2==""){
+                pera.innerHTML="Fill the Name box😠";
+                btn.innerHTML=("---");
+                f.style.display="none";
+                return false;
+            }
+            else if(txt1=="PROTTOY" || txt2=="PROTTOY"){
+                f.style.display="flex";
+                pera.innerHTML=("Here is "+txt1+" and "+txt2+"'s Love Match");
+            btn.innerHTML=(percentage+" %");
+            }
+            else{
+                
+            pera.innerHTML=("Here is "+txt1+" and "+txt2+"'s Love Match");
+            btn.innerHTML=(percentage+" %");
+            f.style.display="none";
+            }
+            
+            
+        }
+
+        document.addEventListener("contextmenu",function(proWeb){
+proWeb.preventDefault();
+      });
+        </script>
+    </body>
+</html>
